@@ -1,6 +1,6 @@
 package net.zhspace;
 
-import server.core.networking.utils.AddressObject;
+import net.zhspace.AddressObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
