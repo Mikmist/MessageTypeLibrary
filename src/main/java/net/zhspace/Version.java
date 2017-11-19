@@ -1,10 +1,14 @@
 package net.zhspace;
 
+import java.io.Serializable;
+
 /**
  * Author: Zino Holwerda
  * Date: 11/18/2017.
  */
-public class Version implements Comparable<Version> {
+public class Version implements Comparable<Version>, Serializable {
+    
+    private static final long serialVersionUID = 2312L;
 
     /** The version with which this object was made */
     private String version;

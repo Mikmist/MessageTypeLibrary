@@ -1,12 +1,15 @@
 package net.zhspace;
 
 import java.net.InetAddress;
+import java.io.Serializable;
 
 /**
  * Author: Zino Holwerda
  * Date: 11/18/2017.
  */
-public class AddressObject {
+public class AddressObject implements Serializable{
+
+    private static final long serialVersionUID = 3L;
 
     private InetAddress address;
     private int port;
