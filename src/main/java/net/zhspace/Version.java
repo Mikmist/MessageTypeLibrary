@@ -1,4 +1,4 @@
-package zh.space;
+package net.zhspace;
 
 /**
  * Author: Zino Holwerda
