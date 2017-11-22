@@ -1,22 +1,33 @@
 package net.zhspace;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Author: Zino Holwerda
  * Date: 11/18/2017.
  */
+@Entity
 public class Version implements Comparable<Version>, Serializable {
     
     private static final long serialVersionUID = 2312L;
 
+    @Id
+    private long id;
+
     /** The version with which this object was made */
     private String version;
 
-    public final String get() {
+    /** List of strings containing file names that need to be updated in this version*/
+    List<String> files;
+
+    public String get() {
         return this.version;
     }
 
+    public Version() {}
     public Version(String version) {
         if(version == null)
             throw new IllegalArgumentException("Version can not be null");
@@ -25,7 +36,8 @@ public class Version implements Comparable<Version>, Serializable {
         this.version = version;
     }
 
-    @Override public int compareTo(Version that) {
+    @Override
+    public int compareTo(Version that) {
         if(that == null)
             return 1;
         String[] thisParts = this.get().split("\\.");
@@ -44,7 +56,8 @@ public class Version implements Comparable<Version>, Serializable {
         return 0;
     }
 
-    @Override public boolean equals(Object that) {
+    @Override
+    public boolean equals(Object that) {
         if(this == that)
             return true;
         if(that == null)
@@ -52,6 +65,18 @@ public class Version implements Comparable<Version>, Serializable {
         if(this.getClass() != that.getClass())
             return false;
         return this.compareTo((Version) that) == 0;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public void addFileToVersionList(String filename) {
+        this.files.add(filename);
+    }
+
+    public void removeFileFromVersionList(String filename) {
+        this.files.remove(filename);
     }
 
 }
