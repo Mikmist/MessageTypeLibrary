@@ -79,4 +79,7 @@ public class Version implements Comparable<Version>, Serializable {
         this.files.remove(filename);
     }
 
+    public long getId() {
+        return id;
+    }
 }
