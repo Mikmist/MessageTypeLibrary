@@ -2,7 +2,6 @@ package net.zhspace;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class Version implements Comparable<Version>, Serializable {
     private String version;
 
     /** List of strings containing file names that need to be updated in this version*/
-    private List<File> files;
+    private List<String> newFiles;
 
     public String get() {
         return this.version;
@@ -68,17 +67,10 @@ public class Version implements Comparable<Version>, Serializable {
         return this.compareTo((Version) that) == 0;
     }
 
-    public List<File> getFiles() {
-        return files;
+    public void addFileToNew(String filename) {
+        this.newFiles.add(filename);
     }
 
-    public void addFileToVersionList(File filename) {
-        this.files.add(filename);
-    }
-
-    public void removeFileFromVersionList(String filename) {
-        this.files.remove(filename);
-    }
 
     public long getId() {
         return id;
@@ -92,8 +84,11 @@ public class Version implements Comparable<Version>, Serializable {
         this.id = id;
     }
 
-    public void setFiles(List<File> files) {
-        this.files = files;
+    public void setNewFiles(List<String> newFiles) {
+        this.newFiles = newFiles;
     }
 
+    public List<String> getNewFiles() {
+        return newFiles;
+    }
 }
